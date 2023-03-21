@@ -6,6 +6,7 @@ class ShakeAnimation extends StatelessWidget {
     super.key,
     this.moveAmount = 16,
     this.durationMilliseconds = 60,
+    this.isHorizontal = true,
     this.developerMode = false,
     required this.child,
   });
@@ -14,6 +15,8 @@ class ShakeAnimation extends StatelessWidget {
 
   final double moveAmount;
   final double durationMilliseconds;
+
+  final bool isHorizontal;
 
   final bool developerMode;
 
@@ -68,7 +71,10 @@ class ShakeAnimation extends StatelessWidget {
       child: child,
       builder: (context, value, child) {
         return Transform.translate(
-          offset: Offset(value.get('shake'), 0),
+          offset: Offset(
+            isHorizontal ? value.get('shake') : 0,
+            isHorizontal ? 0 : value.get('shake'),
+          ),
           child: child,
         );
       },
