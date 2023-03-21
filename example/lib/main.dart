@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:easy_animate/mock/mock_box.dart';
 import 'package:easy_animate/animation/pulse_animation.dart';
+import 'package:easy_animate/animation/shake_animation.dart';
 
 void main() {
   runApp(const HomeScreen());
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<String> list = <String>[
     'BouncingAnimation',
     'PulseAnimation',
-    'Three',
+    'ShakeAnimation',
     'Four'
   ];
 
@@ -71,6 +72,11 @@ Widget animationSelector(String selectedValue) {
     case 'PulseAnimation':
       return const PulseAnimation(
         developerMode: true,
+        child: MockBox(),
+      );
+    case 'ShakeAnimation':
+      return const ShakeAnimation(
+        developerMode: false,
         child: MockBox(),
       );
     default:
