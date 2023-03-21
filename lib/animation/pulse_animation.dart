@@ -13,6 +13,10 @@ class PulseAnimation extends StatelessWidget {
   /// [scaleAmount] is the amount of ratio.
   final double scaleAmount;
 
+  /// [durationMilliseconds] is the duration of the animation in milliseconds.
+  ///
+  /// [durationMilliseconds]'s 50% will be used for the scaling up animation duration.
+  /// [durationMilliseconds]'s 50% will be used for the scaling down animation duration.
   final double durationMilliseconds;
 
   final Widget child;
