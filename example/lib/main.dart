@@ -6,6 +6,7 @@ import 'package:easy_animate/mock/mock_box.dart';
 import 'package:easy_animate/animation/pulse_animation.dart';
 import 'package:easy_animate/animation/shake_animation.dart';
 import 'package:easy_animate/animation/fade_in_animation.dart';
+import 'package:easy_animate/animation/slide_in_animation.dart';
 
 void main() {
   runApp(const HomeScreen());
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'FadeInAnimation( FadeInAxis : right)',
     'FadeInAnimation( FadeInAxis : bottom)',
     'FadeInAnimation( FadeInAxis : left)',
+    'SlideInAnimation ( SlideInAxis : left)',
   ];
 
   String selectedValue = 'BouncingAnimation';
@@ -120,6 +122,12 @@ Widget animationSelector(String selectedValue) {
       return const FadeInAnimation(
         developerMode: true,
         fadeInAxis: FadeInAxis.left,
+        child: MockBox(),
+      );
+    case 'SlideInAnimation ( SlideInAxis : left)':
+      return const SlideInAnimation(
+        developerMode: false,
+        slideInAxis: SlideInAxis.left,
         child: MockBox(),
       );
     default:
