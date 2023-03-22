@@ -6,9 +6,12 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:easy_animate/mock/mock_box.dart';
 import 'package:easy_animate/animation/pulse_animation.dart';
 import 'package:easy_animate/animation/shake_animation.dart';
+import 'package:easy_animate/animation/scale_in_animation.dart';
 import 'package:easy_animate/animation/fade_in_animation.dart';
 import 'package:easy_animate/animation/fade_out_animation.dart';
 import 'package:easy_animate/animation/slide_in_animation.dart';
+import 'package:easy_animate/animation/stamp_in_animation.dart';
+import 'package:easy_animate/animation/fluffy_animation.dart';
 
 void main() {
   runApp(const HomeScreen());
@@ -24,7 +27,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<String> list = <String>[
     'BouncingAnimation',
-    'PulseAnimation',
+    'ScaleInAnimation',
+    'StampInAnimation',
     'ShakeAnimation( isHorizontal : true)',
     'ShakeAnimation( isHorizontal : false)',
     'FadeInAnimation( animateDirection : none)',
@@ -38,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
     'FadeOutAnimation( animateDirection : bottom)',
     'FadeOutAnimation( animateDirection : left)',
     'SlideInAnimation ( animateDirection : left)',
+    'PulseAnimation',
+    'FluffyAnimation',
   ];
 
   String selectedValue = 'BouncingAnimation';
@@ -85,8 +91,14 @@ Widget animationSelector(String selectedValue) {
         developerMode: true,
         child: MockBox(),
       );
-    case 'PulseAnimation':
-      return const PulseAnimation(
+
+    case 'ScaleInAnimation':
+      return const ScaleInAnimation(
+        developerMode: true,
+        child: MockBox(),
+      );
+    case 'StampInAnimation':
+      return const StampInAnimation(
         developerMode: true,
         child: MockBox(),
       );
@@ -166,6 +178,16 @@ Widget animationSelector(String selectedValue) {
       return const FadeOutAnimation(
         developerMode: true,
         animateDirection: AnimateDirection.left,
+        child: MockBox(),
+      );
+    case 'PulseAnimation':
+      return const PulseAnimation(
+        developerMode: true,
+        child: MockBox(),
+      );
+    case 'FluffyAnimation':
+      return const FluffyAnimation(
+        developerMode: false,
         child: MockBox(),
       );
     default:
