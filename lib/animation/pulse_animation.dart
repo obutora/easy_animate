@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../enum/animate_type.dart';
+
 class PulseAnimation extends StatelessWidget {
   const PulseAnimation({
     Key? key,
     required this.child,
+    this.animateType = AnimateType.once,
     this.scaleAmount = 1.1,
     this.durationMilliseconds = 1200,
     this.developerMode = false,
   }) : super(key: key);
+
+  /// [animateType] is the type of animation to be played.
+  ///
+  /// [animateType.once] plays the animation once.
+  /// [animateType.mirror] plays the animation once and then plays it in reverse.
+  /// [animateType.loop] plays the animation in a loop.
+  final AnimateType animateType;
 
   /// [scaleAmount] is the amount of ratio.
   final double scaleAmount;
@@ -37,7 +47,8 @@ class PulseAnimation extends StatelessWidget {
         curve: Curves.easeInOut,
       );
 
-    return PlayAnimationBuilder<Movie>(
+    return CustomAnimationBuilder<Movie>(
+      control: animateType.getController,
       tween: tween,
       duration: tween.duration,
       developerMode: developerMode,

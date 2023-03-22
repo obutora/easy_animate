@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../enum/animate_type.dart';
+
 @immutable
 class BouncingAnimation extends StatelessWidget {
   const BouncingAnimation({
     Key? key,
     required this.child,
+    this.animateType = AnimateType.once,
     this.moveAmount = 100,
     this.durationMilliseconds = 1200,
     this.developerMode = false,
   }) : super(key: key);
 
   final Widget child;
+
+  /// [animateType] is the type of animation to be played.
+  ///
+  /// [animateType.once] plays the animation once.
+  /// [animateType.mirror] plays the animation once and then plays it in reverse.
+  /// [animateType.loop] plays the animation in a loop.
+  final AnimateType animateType;
 
   /// [moveAmount] is the amount of pixels the widget will move up and down.
   final double moveAmount;
@@ -39,7 +49,8 @@ class BouncingAnimation extends StatelessWidget {
         curve: Curves.bounceOut,
       );
 
-    return PlayAnimationBuilder<Movie>(
+    return CustomAnimationBuilder<Movie>(
+        control: animateType.getController,
         developerMode: developerMode,
         tween: tween,
         duration: tween.duration,

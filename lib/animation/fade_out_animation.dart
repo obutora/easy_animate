@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:simple_animations/animation_builder/play_animation_builder.dart';
-import 'package:simple_animations/movie_tween/movie_tween.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 import '../enum/animate_direction.dart';
+import '../enum/animate_type.dart';
 
 class FadeOutAnimation extends StatelessWidget {
   const FadeOutAnimation({
     super.key,
     required this.child,
+    this.animateType = AnimateType.once,
     this.animateDirection = AnimateDirection.none,
     this.durationMilliseconds = 1200,
     this.moveAmount = 100,
@@ -15,6 +16,13 @@ class FadeOutAnimation extends StatelessWidget {
   });
 
   final Widget child;
+
+  /// [animateType] is the type of animation to be played.
+  ///
+  /// [animateType.once] plays the animation once.
+  /// [animateType.mirror] plays the animation once and then plays it in reverse.
+  /// [animateType.loop] plays the animation in a loop.
+  final AnimateType animateType;
 
   /// [fadeInAxis] is the axis of the fade out animation.
   final AnimateDirection animateDirection;
@@ -58,15 +66,18 @@ class FadeOutAnimation extends StatelessWidget {
         curve: Curves.easeOutCirc,
       );
 
-    return PlayAnimationBuilder(
-        tween: tween,
-        duration: tween.duration,
-        developerMode: developerMode,
-        builder: ((context, value, child) {
-          return Transform.translate(
-              offset: calcMovement(value.get('move')),
-              child: Opacity(opacity: value.get('opacity'), child: child));
-        }),
-        child: child);
+    return CustomAnimationBuilder(
+      control: animateType.getController,
+      tween: tween,
+      duration: tween.duration,
+      developerMode: developerMode,
+      builder: ((context, value, child) {
+        return Transform.translate(
+            offset: calcMovement(value.get('move')),
+            child: Opacity(opacity: value.get('opacity'), child: child));
+      }),
+      // onCompleted: ,
+      child: child,
+    );
   }
 }

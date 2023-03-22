@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../enum/animate_type.dart';
+
 class ShakeAnimation extends StatelessWidget {
   const ShakeAnimation({
     super.key,
+    this.animateType = AnimateType.once,
     this.moveAmount = 16,
     this.durationMilliseconds = 60,
     this.isHorizontal = true,
@@ -12,6 +15,13 @@ class ShakeAnimation extends StatelessWidget {
   });
 
   final Widget child;
+
+  /// [animateType] is the type of animation to be played.
+  ///
+  /// [animateType.once] plays the animation once.
+  /// [animateType.mirror] plays the animation once and then plays it in reverse.
+  /// [animateType.loop] plays the animation in a loop.
+  final AnimateType animateType;
 
   /// [moveAmount] is the amount of pixels the widget.
   final double moveAmount;
@@ -67,8 +77,9 @@ class ShakeAnimation extends StatelessWidget {
             curve: Curves.easeInOut,
           );
 
-    return PlayAnimationBuilder(
+    return CustomAnimationBuilder(
       developerMode: developerMode,
+      control: animateType.getController,
       tween: tween,
       duration: tween.duration,
       child: child,
