@@ -1,4 +1,5 @@
 import 'package:easy_animate/animation/bouncing_animation.dart';
+import 'package:easy_animate/enum/animate_direction.dart';
 import 'package:flutter/material.dart';
 
 import 'package:simple_animations/simple_animations.dart';
@@ -25,12 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
     'PulseAnimation',
     'ShakeAnimation( isHorizontal : true)',
     'ShakeAnimation( isHorizontal : false)',
-    'FadeInAnimation( FadeInAxis : none)',
-    'FadeInAnimation( FadeInAxis : top)',
-    'FadeInAnimation( FadeInAxis : right)',
-    'FadeInAnimation( FadeInAxis : bottom)',
-    'FadeInAnimation( FadeInAxis : left)',
-    'SlideInAnimation ( SlideInAxis : left)',
+    'FadeInAnimation( animateDirection : none)',
+    'FadeInAnimation( animateDirection : top)',
+    'FadeInAnimation( animateDirection : right)',
+    'FadeInAnimation( animateDirection : bottom)',
+    'FadeInAnimation( animateDirection : left)',
+    'SlideInAnimation ( animateDirection : left)',
   ];
 
   String selectedValue = 'BouncingAnimation';
@@ -94,40 +95,40 @@ Widget animationSelector(String selectedValue) {
         isHorizontal: false,
         child: MockBox(),
       );
-    case 'FadeInAnimation( FadeInAxis : none)':
+    case 'FadeInAnimation( animateDirection : none)':
       return const FadeInAnimation(
         developerMode: true,
-        fadeInAxis: FadeInAxis.none,
+        animateDirection: AnimateDirection.none,
         child: MockBox(),
       );
-    case 'FadeInAnimation( FadeInAxis : top)':
+    case 'FadeInAnimation( animateDirection : top)':
       return const FadeInAnimation(
         developerMode: true,
-        fadeInAxis: FadeInAxis.top,
+        animateDirection: AnimateDirection.top,
         child: MockBox(),
       );
-    case 'FadeInAnimation( FadeInAxis : right)':
+    case 'FadeInAnimation( animateDirection : right)':
       return const FadeInAnimation(
         developerMode: true,
-        fadeInAxis: FadeInAxis.right,
+        animateDirection: AnimateDirection.right,
         child: MockBox(),
       );
-    case 'FadeInAnimation( FadeInAxis : bottom)':
+    case 'FadeInAnimation( animateDirection : bottom)':
       return const FadeInAnimation(
         developerMode: true,
-        fadeInAxis: FadeInAxis.bottom,
+        animateDirection: AnimateDirection.bottom,
         child: MockBox(),
       );
-    case 'FadeInAnimation( FadeInAxis : left)':
+    case 'FadeInAnimation( animateDirection : left)':
       return const FadeInAnimation(
         developerMode: true,
-        fadeInAxis: FadeInAxis.left,
+        animateDirection: AnimateDirection.left,
         child: MockBox(),
       );
-    case 'SlideInAnimation ( SlideInAxis : left)':
+    case 'SlideInAnimation ( animateDirection : left)':
       return const SlideInAnimation(
         developerMode: false,
-        slideInAxis: SlideInAxis.left,
+        animateDirection: AnimateDirection.left,
         child: MockBox(),
       );
     default:

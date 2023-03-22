@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/animation_builder/play_animation_builder.dart';
 import 'package:simple_animations/movie_tween/movie_tween.dart';
 
+import '../enum/animate_direction.dart';
+
 class SlideInAnimation extends StatelessWidget {
   const SlideInAnimation({
     super.key,
     required this.child,
-    this.slideInAxis = SlideInAxis.left,
+    this.animateDirection = AnimateDirection.left,
     this.durationMilliseconds = 1200,
     this.moveAmount = 100,
     this.developerMode = false,
@@ -15,7 +17,7 @@ class SlideInAnimation extends StatelessWidget {
   final Widget child;
 
   /// [slideInAxis] is the axis of the slide in animation.
-  final SlideInAxis slideInAxis;
+  final AnimateDirection animateDirection;
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
@@ -26,15 +28,18 @@ class SlideInAnimation extends StatelessWidget {
   final bool developerMode;
 
   calcMovement(double value) {
-    switch (slideInAxis) {
-      case SlideInAxis.top:
+    switch (animateDirection) {
+      case AnimateDirection.top:
         return Offset(0, value);
-      case SlideInAxis.right:
+      case AnimateDirection.right:
         return Offset(-value, 0);
-      case SlideInAxis.bottom:
+      case AnimateDirection.bottom:
         return Offset(0, -value);
-      case SlideInAxis.left:
+      case AnimateDirection.left:
         return Offset(value, 0);
+      case AnimateDirection.none:
+        throw Exception(
+            'AnimateDirection.none is not supported in SlideInAnimation.');
     }
   }
 
@@ -60,11 +65,4 @@ class SlideInAnimation extends StatelessWidget {
         }),
         child: child);
   }
-}
-
-enum SlideInAxis {
-  top,
-  right,
-  bottom,
-  left,
 }

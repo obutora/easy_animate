@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/animation_builder/play_animation_builder.dart';
 import 'package:simple_animations/movie_tween/movie_tween.dart';
 
-import '../enum/animate_direction.dart';
-
-class FadeInAnimation extends StatelessWidget {
-  const FadeInAnimation({
+class FadeOutAnimation extends StatelessWidget {
+  const FadeOutAnimation({
     super.key,
     required this.child,
-    this.animateDirection = AnimateDirection.none,
+    this.fadeInAxis = FadeInAxis.none,
     this.durationMilliseconds = 1200,
     this.moveAmount = 100,
     this.developerMode = false,
@@ -17,7 +15,7 @@ class FadeInAnimation extends StatelessWidget {
   final Widget child;
 
   /// [fadeInAxis] is the axis of the fade in animation.
-  final AnimateDirection animateDirection;
+  final FadeInAxis fadeInAxis;
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
@@ -28,16 +26,16 @@ class FadeInAnimation extends StatelessWidget {
   final bool developerMode;
 
   calcMovement(double value) {
-    switch (animateDirection) {
-      case AnimateDirection.none:
+    switch (fadeInAxis) {
+      case FadeInAxis.none:
         return const Offset(0, 0);
-      case AnimateDirection.top:
+      case FadeInAxis.top:
         return Offset(0, value);
-      case AnimateDirection.right:
+      case FadeInAxis.right:
         return Offset(-value, 0);
-      case AnimateDirection.bottom:
+      case FadeInAxis.bottom:
         return Offset(0, -value);
-      case AnimateDirection.left:
+      case FadeInAxis.left:
         return Offset(value, 0);
     }
   }
@@ -69,4 +67,12 @@ class FadeInAnimation extends StatelessWidget {
         }),
         child: child);
   }
+}
+
+enum FadeInAxis {
+  none,
+  top,
+  right,
+  bottom,
+  left,
 }
