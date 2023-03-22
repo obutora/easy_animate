@@ -17,6 +17,7 @@ class FadeInAnimation extends StatelessWidget {
   /// [fadeInAxis] is the axis of the fade in animation.
   final FadeInAxis fadeInAxis;
 
+  /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
 
   /// [moveAmount] is the amount of pixels the widget.

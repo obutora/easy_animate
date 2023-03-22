@@ -13,7 +13,10 @@ class ShakeAnimation extends StatelessWidget {
 
   final Widget child;
 
+  /// [moveAmount] is the amount of pixels the widget.
   final double moveAmount;
+
+  /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
 
   final bool isHorizontal;
