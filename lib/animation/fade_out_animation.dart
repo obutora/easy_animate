@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/animation_builder/play_animation_builder.dart';
 import 'package:simple_animations/movie_tween/movie_tween.dart';
 
+import '../enum/animate_direction.dart';
+
 class FadeOutAnimation extends StatelessWidget {
   const FadeOutAnimation({
     super.key,
     required this.child,
-    this.fadeInAxis = FadeInAxis.none,
+    this.animateDirection = AnimateDirection.none,
     this.durationMilliseconds = 1200,
     this.moveAmount = 100,
     this.developerMode = false,
@@ -14,8 +16,8 @@ class FadeOutAnimation extends StatelessWidget {
 
   final Widget child;
 
-  /// [fadeInAxis] is the axis of the fade in animation.
-  final FadeInAxis fadeInAxis;
+  /// [fadeInAxis] is the axis of the fade out animation.
+  final AnimateDirection animateDirection;
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
@@ -26,17 +28,17 @@ class FadeOutAnimation extends StatelessWidget {
   final bool developerMode;
 
   calcMovement(double value) {
-    switch (fadeInAxis) {
-      case FadeInAxis.none:
+    switch (animateDirection) {
+      case AnimateDirection.none:
         return const Offset(0, 0);
-      case FadeInAxis.top:
-        return Offset(0, value);
-      case FadeInAxis.right:
-        return Offset(-value, 0);
-      case FadeInAxis.bottom:
+      case AnimateDirection.top:
         return Offset(0, -value);
-      case FadeInAxis.left:
+      case AnimateDirection.right:
         return Offset(value, 0);
+      case AnimateDirection.bottom:
+        return Offset(0, value);
+      case AnimateDirection.left:
+        return Offset(-value, 0);
     }
   }
 
@@ -45,15 +47,15 @@ class FadeOutAnimation extends StatelessWidget {
     final tween = MovieTween()
       ..tween(
         'opacity',
-        Tween<double>(begin: 0, end: 1),
+        Tween<double>(begin: 1, end: 0),
         duration: Duration(milliseconds: durationMilliseconds.toInt()),
         curve: Curves.ease,
       )
       ..tween(
         'move',
-        Tween<double>(begin: -moveAmount, end: 0),
+        Tween<double>(begin: 0, end: moveAmount),
         duration: Duration(milliseconds: durationMilliseconds.toInt()),
-        curve: Curves.easeInOutCirc,
+        curve: Curves.easeOutCirc,
       );
 
     return PlayAnimationBuilder(
@@ -67,12 +69,4 @@ class FadeOutAnimation extends StatelessWidget {
         }),
         child: child);
   }
-}
-
-enum FadeInAxis {
-  none,
-  top,
-  right,
-  bottom,
-  left,
 }

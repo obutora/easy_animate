@@ -7,6 +7,7 @@ import 'package:easy_animate/mock/mock_box.dart';
 import 'package:easy_animate/animation/pulse_animation.dart';
 import 'package:easy_animate/animation/shake_animation.dart';
 import 'package:easy_animate/animation/fade_in_animation.dart';
+import 'package:easy_animate/animation/fade_out_animation.dart';
 import 'package:easy_animate/animation/slide_in_animation.dart';
 
 void main() {
@@ -31,6 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
     'FadeInAnimation( animateDirection : right)',
     'FadeInAnimation( animateDirection : bottom)',
     'FadeInAnimation( animateDirection : left)',
+    'FadeOutAnimation( animateDirection : none)',
+    'FadeOutAnimation( animateDirection : top)',
+    'FadeOutAnimation( animateDirection : right)',
+    'FadeOutAnimation( animateDirection : bottom)',
+    'FadeOutAnimation( animateDirection : left)',
     'SlideInAnimation ( animateDirection : left)',
   ];
 
@@ -127,7 +133,37 @@ Widget animationSelector(String selectedValue) {
       );
     case 'SlideInAnimation ( animateDirection : left)':
       return const SlideInAnimation(
-        developerMode: false,
+        developerMode: true,
+        animateDirection: AnimateDirection.left,
+        child: MockBox(),
+      );
+    case 'FadeOutAnimation( animateDirection : none)':
+      return const FadeOutAnimation(
+        developerMode: true,
+        animateDirection: AnimateDirection.none,
+        child: MockBox(),
+      );
+    case 'FadeOutAnimation( animateDirection : top)':
+      return const FadeOutAnimation(
+        developerMode: true,
+        animateDirection: AnimateDirection.top,
+        child: MockBox(),
+      );
+    case 'FadeOutAnimation( animateDirection : right)':
+      return const FadeOutAnimation(
+        developerMode: true,
+        animateDirection: AnimateDirection.right,
+        child: MockBox(),
+      );
+    case 'FadeOutAnimation( animateDirection : bottom)':
+      return const FadeOutAnimation(
+        developerMode: true,
+        animateDirection: AnimateDirection.bottom,
+        child: MockBox(),
+      );
+    case 'FadeOutAnimation( animateDirection : left)':
+      return const FadeOutAnimation(
+        developerMode: true,
         animateDirection: AnimateDirection.left,
         child: MockBox(),
       );
