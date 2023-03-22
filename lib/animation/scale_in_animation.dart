@@ -9,7 +9,6 @@ class ScaleInAnimation extends StatelessWidget {
     required this.child,
     this.animateType = AnimateType.once,
     this.durationMilliseconds = 600,
-    this.moveAmount = 100,
     this.developerMode = false,
   });
 
@@ -24,9 +23,6 @@ class ScaleInAnimation extends StatelessWidget {
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
-
-  /// [moveAmount] is the amount of pixels the widget.
-  final double moveAmount;
 
   final bool developerMode;
 
