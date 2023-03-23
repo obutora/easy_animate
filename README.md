@@ -17,6 +17,7 @@ You can easily add animation effects to your apps without setting any further pr
 However, you can customize and set Durtation, Direction, moveAmount and more properties as needed.
 
 - [easy_animate](#easy_animate)
+  - [Dependency](#dependency)
   - [Animation List](#animation-list)
     - [FadeIn](#fadein)
     - [FadeOut](#fadeout)
@@ -28,6 +29,10 @@ However, you can customize and set Durtation, Direction, moveAmount and more pro
     - [Pulse](#pulse)
   - [Customizing Animation](#customizing-animation)
   - [Developer mode](#developer-mode)
+
+## Dependency
+
+[simple_animation package](https://pub.dev/packages/simple_animations#customanimationbuilder)
 
 ## Animation List
 
