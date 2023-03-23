@@ -187,7 +187,7 @@ Widget animationSelector(String selectedValue) {
       );
     case 'FluffyAnimation':
       return const FluffyAnimation(
-        developerMode: false,
+        developerMode: true,
         child: MockBox(),
       );
     default:
