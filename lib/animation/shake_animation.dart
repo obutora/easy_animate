@@ -9,6 +9,7 @@ class ShakeAnimation extends StatelessWidget {
     this.animateType = AnimateType.once,
     this.moveAmount = 16,
     this.durationMilliseconds = 60,
+    this.delay = const Duration(milliseconds: 0),
     this.isHorizontal = true,
     this.developerMode = false,
     required this.child,
@@ -28,6 +29,8 @@ class ShakeAnimation extends StatelessWidget {
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   final bool isHorizontal;
 
@@ -82,6 +85,7 @@ class ShakeAnimation extends StatelessWidget {
       control: animateType.getController,
       tween: tween,
       duration: tween.duration,
+      delay: delay,
       child: child,
       builder: (context, value, child) {
         return Transform.translate(

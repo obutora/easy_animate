@@ -14,7 +14,7 @@ const FadeInAnimation(
 It`s so easy!🤩
 
 You can easily add animation effects to your apps without setting any further properties.
-However, you can customize and set Durtation, Direction, moveAmount and more properties as needed.
+However, you can customize/set Durtation, Direction, moveAmount and more properties as needed.
 
 - [easy_animate](#easy_animate)
   - [Dependency](#dependency)
@@ -29,6 +29,7 @@ However, you can customize and set Durtation, Direction, moveAmount and more pro
     - [Pulse](#pulse)
   - [Customizing Animation](#customizing-animation)
   - [Developer mode](#developer-mode)
+  - [Acknowledgments](#acknowledgments)
 
 ## Dependency
 
@@ -141,6 +142,7 @@ FadeInAnimation(
 | animateType          | AnimateType.once, AnimateType.loop, AnimateType.mirror                                                              | Defines the type of animation             |
 | durationMilliseconds | double                                                                                                              | Defines the duration(ms) of the animation |
 | moveAmount           | double                                                                                                              | Defines the distance of the animation     |
+| delay                | Duration                                                                                                            | Defines the delay of the animation        |
 
 ## Developer mode
 
@@ -158,4 +160,8 @@ AnimationDeveloperTools(
 
 Yes, just set `AnimationDeveloperTools()` as the parent widget and enable developerMode.
 
-See [simple_animation package](https://pub.dev/packages/simple_animations#customanimationbuilder) for more details.
+See [simple_animation package](https://pub.dev/packages/simple_animations) for more details.
+
+## Acknowledgments
+
+I'm grateful for package [simple_animation](https://pub.dev/packages/simple_animations) & Development team🙏

@@ -11,6 +11,7 @@ class BouncingAnimation extends StatelessWidget {
     this.animateType = AnimateType.once,
     this.moveAmount = 100,
     this.durationMilliseconds = 1200,
+    this.delay = const Duration(milliseconds: 0),
     this.developerMode = false,
   }) : super(key: key);
 
@@ -31,6 +32,8 @@ class BouncingAnimation extends StatelessWidget {
   /// [durationMilliseconds]'s 30% will be used for the hopping up animation duration.
   /// [durationMilliseconds]'s 70% will be used for the hopping down animation duration.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   final bool developerMode;
 
@@ -54,6 +57,7 @@ class BouncingAnimation extends StatelessWidget {
         developerMode: developerMode,
         tween: tween,
         duration: tween.duration,
+        delay: delay,
         child: child,
         builder: (context, value, child) {
           return Transform.translate(

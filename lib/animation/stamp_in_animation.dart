@@ -9,6 +9,7 @@ class StampInAnimation extends StatelessWidget {
     required this.child,
     this.animateType = AnimateType.once,
     this.durationMilliseconds = 600,
+    this.delay = const Duration(milliseconds: 0),
     this.initScale = 1.8,
     this.developerMode = false,
   });
@@ -24,6 +25,8 @@ class StampInAnimation extends StatelessWidget {
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   /// [initScale] is the initial scale of the widget.
   ///
@@ -50,6 +53,7 @@ class StampInAnimation extends StatelessWidget {
       control: animateType.getController,
       tween: tween,
       duration: tween.duration,
+      delay: delay,
       developerMode: developerMode,
       builder: ((context, value, child) {
         return Transform.scale(

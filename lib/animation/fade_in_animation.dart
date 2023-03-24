@@ -11,6 +11,7 @@ class FadeInAnimation extends StatelessWidget {
     this.animateType = AnimateType.once,
     this.animateDirection = AnimateDirection.none,
     this.durationMilliseconds = 1200,
+    this.delay = const Duration(milliseconds: 0),
     this.moveAmount = 100,
     this.developerMode = false,
   });
@@ -29,6 +30,8 @@ class FadeInAnimation extends StatelessWidget {
 
   /// [durationMilliseconds] is the duration of the animation in milliseconds.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   /// [moveAmount] is the amount of pixels the widget.
   final double moveAmount;
@@ -70,6 +73,7 @@ class FadeInAnimation extends StatelessWidget {
         control: animateType.getController,
         tween: tween,
         duration: tween.duration,
+        delay: delay,
         developerMode: developerMode,
         builder: ((context, value, child) {
           return Transform.translate(

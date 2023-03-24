@@ -10,6 +10,7 @@ class PulseAnimation extends StatelessWidget {
     this.animateType = AnimateType.once,
     this.scaleAmount = 1.1,
     this.durationMilliseconds = 1200,
+    this.delay = const Duration(milliseconds: 0),
     this.developerMode = false,
   }) : super(key: key);
 
@@ -28,6 +29,8 @@ class PulseAnimation extends StatelessWidget {
   /// [durationMilliseconds]'s 50% will be used for the scaling up animation duration.
   /// [durationMilliseconds]'s 50% will be used for the scaling down animation duration.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   final Widget child;
   final bool developerMode;
@@ -51,6 +54,7 @@ class PulseAnimation extends StatelessWidget {
       control: animateType.getController,
       tween: tween,
       duration: tween.duration,
+      delay: delay,
       developerMode: developerMode,
       builder: (context, value, child) {
         return Transform.scale(

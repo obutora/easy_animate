@@ -10,6 +10,7 @@ class FluffyAnimation extends StatelessWidget {
     required this.child,
     this.moveAmount = 16,
     this.durationMilliseconds = 5000,
+    this.delay = const Duration(milliseconds: 0),
     this.developerMode = false,
   }) : super(key: key);
 
@@ -23,6 +24,8 @@ class FluffyAnimation extends StatelessWidget {
   /// [durationMilliseconds]'s 30% will be used for the hopping up animation duration.
   /// [durationMilliseconds]'s 70% will be used for the hopping down animation duration.
   final double durationMilliseconds;
+
+  final Duration delay;
 
   final bool developerMode;
 
@@ -51,6 +54,7 @@ class FluffyAnimation extends StatelessWidget {
         developerMode: developerMode,
         tween: tween,
         duration: tween.duration,
+        delay: delay,
         child: child,
         builder: (context, value, child) {
           return Transform.translate(
